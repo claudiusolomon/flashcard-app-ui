@@ -81,12 +81,23 @@ function StudyFlashcard() {
         navigate("/");
     }
 
+    const formatSideText = (text) => {
+        const sentences = text.split('||');
+        return (
+            <div>
+            {
+                sentences.map(sentence => <p>{sentence.trim()}</p>)
+            }
+            </div>
+        )
+    }
+
     return (
         <div className="Card-container">
             <div className="Card">
                 <div className="Card-content">
                     <div className="Card-content-main">
-                        <p>{showFront ? currentCard.front : currentCard.back}</p>
+                        <p>{showFront ? formatSideText(currentCard.front) : formatSideText(currentCard.back)}</p>
                     </div>
                     <div className="Card-content-info">
                         <p>Card Set: {currentCard.cardSet}</p>
