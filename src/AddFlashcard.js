@@ -19,6 +19,15 @@ function AddFlashcard() {
     // This function will handle the submission.
     async function onSubmit(e) {
         e.preventDefault();
+        if(form.cardSet.length == 0) {
+            alert("Choose card set!");
+            return;
+        }
+
+        if(form.front.length == 0) {
+            alert("Insert text for front side!");
+            return;
+        }
 
         // When a post request is sent to the create url, we'll add a new record to the database.
         const newFlashcard = { ...form };
