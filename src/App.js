@@ -27,7 +27,8 @@ function App() {
 
       for (const currentSet of uniqueCardSets) {
         const cardsInCurrentSet = cards.filter(card => card.cardSet === currentSet)
-        const averageLevel = cardsInCurrentSet.reduce((acc, cur) => acc + cur.level, 0) / cardsInCurrentSet.length
+        console.log(cardsInCurrentSet.reduce((acc, cur) => acc + Number(cur.level), 0));
+        const averageLevel = cardsInCurrentSet.reduce((acc, cur) => acc + Number(cur.level), 0) / cardsInCurrentSet.length
         csInfo.push({ cardSetName: currentSet, averageLevel: averageLevel, numberOfCards: cardsInCurrentSet.length })
       }
 

@@ -45,8 +45,10 @@ function StudyFlashcard() {
 
         const updatedCard = {
             ...currentCard,
-            level: currentCard.level + 1
+            level: Number(currentCard.level) + 1
         };
+
+        console.log(updatedCard);
 
         // This will send a post request to update the data in the database.
         await fetch(`http://localhost:5000/flashcards/${currentCard._id}`, {
@@ -86,7 +88,7 @@ function StudyFlashcard() {
         return (
             <div>
             {
-                sentences.map(sentence => <p>{sentence.trim()}</p>)
+                sentences.map((sentence, index) => <p key={index}>{sentence.trim()}</p>)
             }
             </div>
         )
@@ -97,7 +99,7 @@ function StudyFlashcard() {
             <div className="Card">
                 <div className="Card-content">
                     <div className="Card-content-main">
-                        <p>{showFront ? formatSideText(currentCard.front) : formatSideText(currentCard.back)}</p>
+                        <div>{showFront ? formatSideText(currentCard.front) : formatSideText(currentCard.back)}</div>
                     </div>
                     <div className="Card-content-info">
                         <p>Card Set: {currentCard.cardSet}</p>

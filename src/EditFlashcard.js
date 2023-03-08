@@ -14,7 +14,7 @@ function EditFlashcard({ cardToEdit, closeEdit }) {
 
         const updatedFlashcard = { ...card };
 
-        await fetch("http://localhost:5000/flashcards", {
+        await fetch(`http://localhost:5000/flashcards/${card._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -26,7 +26,7 @@ function EditFlashcard({ cardToEdit, closeEdit }) {
                 return;
             });
 
-        setCard({ front: "", back: "", cardSet: "", level: "" });
+        setCard({ front: "", back: "", cardSet: "", level: 0 });
         closeEdit();
     }
 
